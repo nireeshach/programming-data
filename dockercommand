@@ -1,0 +1,43 @@
+Update the apt package index.
+
+$ sudo apt-get update
+Install the latest version of Docker CE, or go to the next step to install a specific version:
+
+$ sudo apt-get install docker-ce
+
+
+to run the image from hub
+
+docker run -p 4000:80 username/repository:tag
+
+
+docker run -p 4000:80 chnireesha/getstarted:part1
+
+#to tag image in repository
+
+docker tag image username/repository:tag
+
+# to build an image
+docker build -t testapp .
+
+
+# test app with falcon
+docker run -it -p8080:8080 testapp "customer_recipes_purchase_count.csv"
+
+
+docker run -it -p9002:80 testapp "customer_recipes_purchase_count.csv"
+
+docker run -it -p8080:8080 testapp "customer_recipes_purchase_count.csv"
+
+
+# to stop containers
+
+/bin/bash clear_docker.sh
+
+#to stop images
+
+docker system prune -a
+
+
+
+

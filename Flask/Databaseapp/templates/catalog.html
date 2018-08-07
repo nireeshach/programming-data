@@ -1,0 +1,33 @@
+{% extends "basic.html" %} {% block content %}
+<h3>DataCatalog</h3>
+<table class="table table-bordered">
+
+    <tr>
+
+        <th>main_data_source_key</th>
+
+        <th>entity</th>
+
+        <th>field</th>
+
+        <th>normalize_type</th>
+
+    </tr>
+    {%- for catalog in catalog %}
+    <tr>
+
+        <td>{{ catalog.main_data_source_key }}</td>
+
+        <td>{{ catalog.entity }}</td>
+
+        <td>{{ catalog.field }}</td>
+
+        <td>{{ catalog.normalize_type }}</td>
+    </tr>
+    {%- endfor %}
+</table>
+
+<a href="{{url_for('add')}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Add DataCatalog</a>
+<a href="{{url_for('deldata')}}" class="btn btn-secondary btn-lg active " role="button " aria-pressed="true ">Delete Catalog</a>
+
+{% endblock %}

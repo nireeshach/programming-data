@@ -1,0 +1,194 @@
+ssh:
+
+ssh keygen -c nireesha
+
+cat ~/.ssh/id_rsa.pub 
+
+#after adding key to server
+
+vim ~/bash
+
+adding path in the bash file
+
+# Chef'd Machine Alias
+alias cdev='ssh -i ~/.ssh/id_rsa.pub saran@35.202.113.251'
+
+git config --global user.name "chnireesha"
+
+
+
+vscode:
+
+
+#to clone the documents from the git
+
+git:clone
+
+# enter the github url
+
+#enter github username and pw
+
+
+
+#when adding the configuration we will get the .vscode settings.json
+
+
+
+conda: 
+
+echo path
+
+# gives the current conda path
+
+conda create --name ingredients_research python=3
+
+ctrl+r search the recent commnad
+
+/home/sds-04/anaconda3/bin:$PATH
+
+
+
+nireesha@dev:nireesha$cd /home/saran/chefd/ingredients_research/Training/nireesha/
+
+
+
+/home/saran/chefd/ingredients_research/nireesha
+
+
+pip install django-admin-view-permission
+
+
+ 16                 widgets = {"category": forms.TextInput(attrs={"_style": "search multiple", "_override": "Select" })}
+
+
+
+
+shift+v +down arrow to select whole line
+crtl+w to delet the space
+esc+u undo
+shift+dd to delete the line
+
+
+git pull origin dev
+
+ls -la
+
+sudo add-apt-repository ppa:deadsnakes/ppa
+
+sudo apt-get update
+
+sudo apt-get install python3.6
+
+sudo update-alternatives --config python3
+
+Open your .bashrc file nano ~/.bashrc. Type alias python=python3 on to a new line at the top of the file then save the file with ctrl+o and close the file with ctrl+x. Then, back at your command line type source ~/.bashrc. Now your alias should be permanent.
+
+
+
+sudo apt install python3.6-dev
+sudo apt install python3.6-venv
+wget https://bootstrap.pypa.io/get-pip.py
+	
+
+
+to create env in linux
+
+python -m venv ".venv" in the respective folder
+
+right click and open with vscode
+
+in user settings
+// Provider for formatting. Possible options include 'autopep8' and 'yapf'.
+    "python.formatting.provider": "autopep8",
+
+    // Format the document upon saving.
+    "[python]":{
+        "editor.formatOnSave":true
+    },  
+
+    // Configure glob patterns for excluding files and folders.
+    "files.exclude": {
+        // defaults
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+
+        // Python
+        "**/__pycache__": true,
+        "**/*.pyc": true,
+        ".venv": true,
+        "venv": true,
+
+
+        // domino data labs
+        "**/.dominokeep": true,
+        "**/.dominoignore": true,
+        "**/.dominoresults": true,
+        "domino.log": true,
+        "dominostats.json": true,
+        ".domino": true
+    }
+
+
+
+install vscode-icons
+install onedarkpro
+install pylint
+install autopep8
+install -r requirements.txt
+activate the environment. source .venv
+
+json file
+
+
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python",
+            "type": "python",
+            "request": "launch",
+            "stopOnEntry": false,
+            "pythonPath": "${config:python.pythonPath}",
+            "program": "${workspaceRoot}/main.py",
+            "args": [
+                "--wis", "none", 
+                "--cat", "none",
+                "--opi", "100",
+                "--rep", "4:5",
+                "--igp", "14:15",
+                "--mxr", "1",
+                "--sth", "1",
+                "--lmt", "1000",
+                "--csp", ","
+            ],            
+            "cwd": "${workspaceRoot}",
+            "env": {},
+            "envFile": "${workspaceRoot}/.env",
+            "console": "none",
+            "debugOptions": [
+                "RedirectOutput"
+            ]
+        }
+    ]
+}
+
+
+source /home/sds-04/github/chefddata/cmd_ingredients_optimization/.venv/bin/activate
+
+
+/usr/bin/python3.5 -m pip install -U pylint --user
+Collecting pylint
+
+
+ls -la
+../../ - to go back to two folders
+
+
+pwd to know the current path
+

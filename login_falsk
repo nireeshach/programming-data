@@ -1,0 +1,16 @@
+user authentication and passwords
+
+we are going to use hash functions
+
+we are going to use two libraries
+
+pip install flask-bcrypt
+
+bcrypt = Bcrypt
+hased_password = bcrypt.generate_password_hash(password=password)
+check = bcrypt.check_password_hash(hased_password,'admin123') => it wil check the password given with the original password
+
+
+
+pip install Werkzeug
+

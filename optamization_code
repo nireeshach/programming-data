@@ -1,0 +1,114 @@
+Optimization code:
+
+1.In models (i) ingredient class, declaring what are  items fetching from mongodb and sku_key(self) method returns (quantity;measure;sku;ounces24ths;ounces64ths),
+
+ (ii)processing time() class in which declares start_time method, end_time method and total time took.
+
+(iii) recipe class(), represent the recipe data, in which recipe id, recipe name and respective ingredients.
+
+(iv) in ingredientrecipes class, it maps the ingredients with the recipes. in this declares the recipes count and ingredients count and also it returns the dataset.
+
+2. Data loaders:
+
+(i) importing ingredient and recipe class from models, creating mongo connection , loading ingredient data from mongodb, loading ingredient list and recipe data from mongodb, load method return the recipe data , in which data is a dictionary which contains ingredient data.
+
+(ii)class JsonFileRecipesLoader(object):
+ ingredient data loading from Json file. loding ingredient list, recipe data from json file, load method returns recipe in which contains ingredients data.
+
+(iii) TsvFileValidIngredientsLoader,         """Load valid ingredients list from tsv file"""
+
+(v)MongoDbMasterValueLoader class, load pentry ingredients from mongodb.
+
+3. processors for ingredient opetimization process: 
+
+(i)IngredientsNamesFixer: fixing the ingredients with plural names, in this class removed the ingridents with plural names if singluar ingredient in dataset. it returns the recipes which have ingredients.
+
+(ii)BadIngredientQuantityRemover: removing recipes with bad quantity. if the ingredient has no real_quantity , ingredient will get remove from the recipe. if the recipe has only repsective ingredident, recipe also get remove simultaneously. it reutns the recipes which have ingredients.
+
+(iii)NonIngredientsRemover: removing ingredients which are not in ingredient list. it returns the recipes which have ingredients.
+
+(iv)IgnoreIngredientsRemover:removing ingredients which are in the ignore list, it returns the recipes which have ingredients.
+
+(v)NonWhitelistIngredientsRemover: loading whitelist ingredients from mongodb, if ingredients are not in whitelist are remvoing.it returns the recipes which have ingredients
+
+(vi)AlcoholicRecipesRemover: if the ingredient is alcoholic ingredient, if condition satisfies, that ingredient gets remove from ingredeint list and it returns recipes which have ingredients.
+
+(vii)StateBaseIngredientRemover: if the ingredient have state solid and leaves with weight "ounce" then it gets remove from the ingredient list. it returns recipes which have ingredients
+
+(viii)TwoIngredientsFixer:handling two ingredients mixer. creating a dictionary for ingredients usage in overall recipes. if is_two_ingredient true, it contains both name_long and name_long2 then it checks the usage of the two ingredients , according that it change name_sku to that ingredient otherwise is_two_ingredient without name_long and name_long2 then it removes that ingredient.
+eg: vegetable oil.
+
+(ix)LeastUsedRecipesRemover: according to the significant score, removing recipe from the dataset.
+
+(x)IngredientsCombinationRemover: if a ingredients with a qunaity of double ., then it will replace 2 cups of milk withnthe 1 cup of milk *2
+it ll track as double SKU
+
+(XI)BelowThresholdSkuRecipeRemover: if the len(recipe) below the threshold value(i.e<=1) then the recipe get remove it returns recipes
+
+(Xii)OptimumRecipesFinder() Class to find optimum recipe calculating recipe_sku_factor, sorting recipes based on that factor and returing list of optimum_recipes whose length is max_recipes
+
+(xiii)Find optimum recipes minimizing ingredientsby ranking the recipes based on the no. of ingredients and keeping all sku_keys in set and return list of optium_recipes which are in set.
+
+4.In main.py
+
+(i)declaring arguments and default values
+(ii)loding data from mongodb , by calling MongoDbRecipesLoader()[2(i)] and calling processing time()[1(ii)] to calcualte time taken to complete task
+
+(iii) Processing... ingredients plural name by calling IngredientsNamesFixer()[3(i)] and calling processing time()[1(ii)] to calcualte time taken to complete task and Calculating... dataset i.e returns the remaning ingredients and recipes and time taken to check it.
+
+(iv)Processing... removal of pantry ingredients, loading pantry ingredients from monggodb and calls the method IgnoreIngredientsRemover()[3(iv)] and calling processing time() to calcualte time taken to complete task and Calculating... dataset i.e returns the remaning ingredients and recipes and time taken to check it.
+
+(v) Processing... removal of non_food ingredients, loading data with collection name=non-food and calls the method calls the method IgnoreIngredientsRemover()[3(iv)] and calling processing time() [1(ii)]to calcualte time taken to complete task and Calculating... dataset i.e returns the remaning ingredients and recipes and time taken to check it.
+
+(vi)Processing... removal of non ingredients,calling NonIngredientsRemover()[3(iii)] and calling processing time() [1(ii)]to calcualte time taken to complete task and Calculating... dataset i.e returns the remaning ingredients and recipes and time taken to check it.
+
+(v)Processing... removal of bad quantity ingredients, calling BadIngredientQuantityRemover[3(ii)] and calling processing time() [1(ii)]to calcualte time taken to complete task and Calculating... dataset i.e returns the remaning ingredients and recipes and time taken to check it.
+
+(vi)Processing... two ingredients fixer , calling TwoIngredientsFixer [3(viii)] and calling processing time() [1(ii)]to calcualte time taken to complete task and Calculating... dataset i.e returns the remaning ingredients and recipes and time taken to check it
+
+(vii) if whitelist_mongodb data presents then it loads from the mongodb and generates those list as "missing.csv" and Processing... removal of non white-list ingredient by calling NonWhitelistIngredientsRemover[3(iv)] and calling processing time() [1(ii)]to calcualte time taken to complete task and Calculating... dataset i.e returns the remaning ingredients and recipes and time taken to check it
+
+(ix)Processing... removal of alcoholic recipes by calling AlcoholicRecipesRemover[3(vi)] and calling processing time() [1(ii)]to calcualte time taken to complete task and Calculating... dataset i.e returns the remaning ingredients and recipes and time taken to check it
+
+(x)Processing... state base ingredients remover by calling StateBaseIngredientRemover and calling processing time() [1(ii)]to calcualte time taken to complete task and Calculating... dataset i.e returns the remaning ingredients and recipes and time taken to check it
+
+(xi)Starting recipes removal iteration, by calling LeastUsedRecipesRemover() based on max_removal [3(ix)] and calculating dataset and generating recipes-removal.csv and contiues this proocess by  1-3% and calling processing time() [1(ii)]to calcualte time taken to complete task and Calculating... dataset i.e returns the remaning ingredients and recipes and time taken to check it
+
+(x)starting SKU combination, 
+
+Starting sku combination iteration, by calling IngredientsCombinationRemover() by passing max_replacement and max_removal arguments[3(X)], calling processing time()[1(ii)] to calcualte time taken to complete task.
+
+Generating reports.. by 1-15 times.  and Calculating... dataset i.e returns the remaning ingredients and recipes and time taken to check it
+
+calculating single_sku_ count and double_sku_count , removed_recipes_count and the percentage of the respective counts on remaining recipes,.
+
+calculating single_sku_ count and double_sku_count and total and percentage of the respective counts on remaining recipes
+
+calling processing time() [1(ii)]to calcualte time taken to complete task and Calculating... dataset i.e returns the remaning ingredients and recipes and time taken to check it
+
+
+(xi)Starting threshold sku remova, Sku below theshold removal process by calling BelowThresholdSkuRecipeRemover()[3(ix)] and calling processing time() [1(ii)]to calcualte time taken to complete task and Calculating... dataset i.e returns the remaning ingredients and recipes and time taken to check it.
+
+calculating single_sku_ count and double_sku_count , removed_recipes_count and the percentage of the respective counts on remaining recipes,.
+
+calculating single_sku_ count and double_sku_count and total and percentage of the respective counts on remaining recipes
+
+calling processing time() [1(ii)]to calcualte time taken to complete task and Calculating... dataset i.e returns the remaning ingredients and recipes and time taken to check it
+
+(xii)Starting optimum ingredients proces, 
+
+Finding optimum ingredients recipes , Finding optimum ingredients recipes by calling OptimumSkuFinder()[3(Xiii)] by passing max_optimum_skus value by default: 10,000 and calling processing time() [1(ii)]to calcualte time taken to complete task and Calculating... dataset i.e returns the remaning ingredients and recipes and time taken to check it.
+
+Generating reports, optimum-recipes.csv and calling processing time() [1(ii)]to calcualte time taken to complete task and Calculating... dataset i.e returns the remaning ingredients and recipes and time taken to check it.
+
+
+Generating reports, optimum-sku.csv and calling processing time() [1(ii)]to calcualte time taken to complete task and Calculating... dataset i.e returns the remaning ingredients and recipes and time taken to check it.
+
+calculating single_sku_ count and double_sku_count , removed_recipes_count and the percentage of the respective counts on remaining recipes,.
+
+calculating single_sku_ count and double_sku_count and total and percentage of the respective counts on remaining recipes
+
+
+
+
+

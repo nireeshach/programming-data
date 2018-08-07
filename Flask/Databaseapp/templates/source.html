@@ -1,0 +1,28 @@
+{% extends "basic.html" %} {% block content %}
+<h3>DataSource</h3>
+<table class="table table-bordered">
+
+    <tr>
+
+        <th>key</th>
+
+        <th>name</th>
+
+        <th>remarks</th>
+    </tr>
+    {%- for source in source %}
+    <tr>
+
+        <td>{{ source.key }}</td>
+
+        <td>{{ source.name }}</td>
+
+        <td>{{ source.remarks }}</td>
+    </tr>
+    {%- endfor %}
+</table>
+
+<a href="{{url_for('add')}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Add DataCatalog</a>
+<a href="{{url_for('deldata')}}" class="btn btn-secondary btn-lg active " role="button " aria-pressed="true ">Delete Catalog</a>
+
+{% endblock %}

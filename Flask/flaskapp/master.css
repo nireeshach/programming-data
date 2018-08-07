@@ -1,0 +1,32 @@
+body{
+    background:url(https://images.pexels.com/photos/50677/rain-after-the-rain-a-drop-of-drop-of-rain-50677.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+}
+
+h1{
+
+    font-family: 'Merienda', cursive;
+
+
+}
+
+div{
+    border:red  10px dashed;
+}
+
+p{
+    background: gray;
+    color: darkblue;
+
+
+}
+.firstdiv{
+    background: red;
+}
+
+#stdin{
+    color: yellow;
+}
+
+input{
+border-color: black;
+}

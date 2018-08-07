@@ -1,0 +1,14 @@
+https://conda.io/docs/user-guide/tasks/manage-environments.html#activate-env
+
+# how to know environment names
+conda info -e
+
+# to activate the environment in conda
+
+source activate env_name
+
+# conda install python
+
+conda install python==3.6
+
+

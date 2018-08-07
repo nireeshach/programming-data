@@ -1,0 +1,10 @@
+{% extends "basic.html" %} {% block content %}
+
+<div class="jumbotron">
+    <h4>Delete Data Catalog</h4>
+    <form method="POST">
+        {{form.hidden_tag()}} {{form.field.label}} {{form.field}}
+        <br> {{form.submit()}}
+    </form>
+</div>
+{% endblock %}

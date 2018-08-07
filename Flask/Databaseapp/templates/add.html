@@ -1,0 +1,13 @@
+{% extends "basic.html" %} {% block content %}
+
+<div class="jumbotron">
+    <h4>Add Data Catalog</h4>
+    <form method="POST">
+        {{form.hidden_tag()}} {{form.main_data_source_key.label}} {{form.main_data_source_key}}
+        <br> {{form.entity.label}} {{form.entity}}
+        <br> {{form.field.label}} {{form.field}}
+        <br> {{form.normalize_type.label}} {{form.normalize_type}}
+        <br> {{form.submit()}}
+    </form>
+</div>
+{% endblock %}

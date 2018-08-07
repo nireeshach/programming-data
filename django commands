@@ -1,0 +1,166 @@
+Django:
+
+middle template view
+
+it is python frame work
+
+in environment should install
+
+	pip install django
+
+to create new django project
+
+	django-admin startproject projectname
+	
+	
+	cd projectname/
+
+to test the folderitems
+
+	ls
+
+to run the project
+	python manage.py runserver
+
+url:
+
+from .view(file name) import welcome(method)
+
+modfying the urls pattern'
+
+
+models : python classes
+migration : keep db structure sync with the code
+
+	
+to list out all the commands
+
+	django-admin help --commands
+
+
+to create any app in the existing app
+python manage.py startapp appname
+
+
+
+Migration workflow
+	1. change model code
+	2.GENERATE MIGRATE SCRIPT
+		python manage.py makemigrations
+	if we need to check migrations
+		python manage.py showmigrations
+	show SQL for specific migratio n 
+		python manage.py sqlmigrate appname migrationname
+	3. run migrations
+	python manage.py migrate
+
+
+make change in the models.py i.e the blue print of the database data
+
+class classname(models.model):
+
+
+
+adding app name config in the settings.py
+
+
+
+run command
+	python manage.py makemigrations appname(foldername)
+
+
+need to check with the sql or add to othe sql server
+run command'
+	python manage.py sqlmigrate appname(foldername) 0001(create when run previous cmd)
+
+
+migrate the changes 
+	python manage.py migrate
+
+
+to load the data in sql
+	python manage.py shell
+opens the interactive command
+
+
+
+	from appname.models import tablename1, tablename2
+
+to check the data in the table
+
+	tablename.objects.all()
+
+
+to enter the data in the database
+	a= (col1 = "value";....)
+	
+	or
+	
+	a = tablename()
+	a.col= 'value'
+	.
+	'
+	.
+	.
+save the data
+
+	a.save()
+
+
+#create a login to the admin page
+	python manage.py createsuperuser
+	login credentials
+
+#adding table to the httprequest in admin.py
+
+	admin.site.register(Album(tablename))
+
+
+#we can change view by admin.py
+
+if we want to add to the display then add item to list_display
+list_editable is to which fields  are to be editable
+filter_horizontal and filter_vertical are only for manytomany fields
+
+
+#in models we should define the tables and fields and their relationship.
+
+
+
+def alt_new(self):
+        return "/n".join([str(p) for p in self.alternates_new.all()])
+
+
+
+#to addlist per page count:
+list_per_page = 50
+
+#to sorting by alphabetically then:
+
+ordering = ('name',)
+
+#to change model name in django
+
+verbose_name_plural = 'categories'
+
+
+git checkout -b dev origin/dev
+
+git branch
+
+git pull origin dev
+
+python manage.py migrations --fake
+
+
+ROBO 3T:
+
+vim ~/.bashrc
+export PATH=/usr/local/bin/robo3t/bin/:$PATH
+
+
+tar -xvzf <file>.tgz
+sudo mkdir /usr/local/bin/robo3t
+sudo mv  robo3t<>/* /usr/local/bin/robo3t/
+
+
